@@ -81,31 +81,19 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./index.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./scripts/chat_list.js");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./index.css":
-/*!*******************!*\
-  !*** ./index.css ***!
-  \*******************/
+/***/ "./scripts/chat_list.js":
+/*!******************************!*\
+  !*** ./scripts/chat_list.js ***!
+  \******************************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./index.css?");
-
-/***/ }),
-
-/***/ "./index.js":
-/*!******************!*\
-  !*** ./index.js ***!
-  \******************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _index_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.css */ \"./index.css\");\n/* harmony import */ var _index_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_css__WEBPACK_IMPORTED_MODULE_0__);\n\n\n//# sourceURL=webpack:///./index.js?");
+eval("var chat = document.querySelector('.chat-field'); //chat.addEventListener('click', changePage.bind(this))\n\nfunction changePage() {\n  window.location.href = './index.html';\n}\n\nfunction listeningEvents() {}\n\nfunction createNewChat() {}\n\nfunction getLastMessage() {\n  var text = document.querySelector('.mes-content');\n  var meta = document.querySelector('.message-meta');\n  var messages = localStorage.getItem(\"messages\");\n\n  if (messages.length == []) {\n    var defaultText = \"\\n            <span class=\\\"message-name\\\">\\u0414\\u0436\\u0435\\u043D\\u043D\\u0438\\u0444\\u0435\\u0440</span>\\n            <span class=\\\"message-text\\\">\\u041F\\u0440\\u0438\\u0432\\u0435\\u0442, \\u0414\\u0436\\u0435\\u043D, \\u0432\\u0441\\u0451 \\u043D\\u043E\\u0440\\u043C\\u0430\\u043B\\u044C\\u043D\\u043E, \\u043F\\u0440\\u043E\\u0441\\u0442\\u043E \\u043D\\u0430 \\u0440\\u0430\\u0431\\u043E\\u0442\\u0435 \\u0437\\u0430\\u0432\\u0430\\u043B.</span>\\n        \";\n    var defaultMeta = \"\\n            <span class=\\\"message-time\\\">10:53</span>\\n            <span class=\\\"message-status\\\">\\n                <i class=\\\"material-icons\\\">done_all</i>\\n            </span>\\n        \";\n    text.innerHTML = defaultText;\n    meta.innerHTML = defaultMeta;\n    return;\n  }\n\n  messages = localStorage.getItem(\"messages\");\n  messages = JSON.parse(messages); //messages.sort((a, b) => {return a[\"time\"] < b[\"time\"]})\n\n  console.log(\"yes\");\n  var lastMessage = messages.at(-1);\n  console.log(lastMessage);\n  var updateChatInfo = \"\\n            <span class=\\\"message-name\\\">\" + String(lastMessage['reciever']) + \"</span>\\n            <span class=\\\"message-text\\\">\" + String(lastMessage['text']) + \"</span>\\n        \";\n  var updateChatMeta = \"\\n            <span class=\\\"message-time\\\">\" + String(lastMessage['time']) + \"</span>\\n            <span class=\\\"message-status\\\">\\n                <i class=\\\"material-icons\\\">done_all</i>\\n            </span>\\n        \"; //`+String(lastMessage['reciever'])+`\n\n  console.log(updateChatInfo);\n  console.log(updateChatMeta);\n  console.log(text);\n  console.log(meta);\n  text.innerHTML = updateChatInfo;\n  meta.innerHTML = updateChatMeta;\n  console.log(messages);\n}\n\nconsole.log(\"yes\");\ngetLastMessage();\n\n//# sourceURL=webpack:///./scripts/chat_list.js?");
 
 /***/ })
 
