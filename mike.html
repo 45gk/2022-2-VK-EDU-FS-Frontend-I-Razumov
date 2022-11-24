@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+
+
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title>Send a message</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, user-scalable=no">
+    <link href="style.css" rel="stylesheet"></head>
+    <body>
+        <style>
+            .material-icons {
+                font-family: 'Material Icons';
+                font-weight: normal;
+                font-style: normal;
+                font-size: 36px;  /* Preferred icon size */
+                display: inline-block;
+                
+                text-transform: none;
+                letter-spacing: normal;
+                word-wrap: normal;
+                white-space: nowrap;
+                direction: ltr;
+                background-color: inherit;
+                width: 50px;
+                border: 0;
+            }
+
+            img{
+                max-width: 100%;
+                border-radius: 50%;
+            }
+            .head{
+                width: 100%;
+                height: 12%;
+                color: white;
+                display: flex;
+                background-color: blueviolet;
+                position: sticky;
+                top: 0;
+                align-items:center;
+                
+                
+
+            }
+
+            .img-head{
+                border-radius: 50%;
+                width: 75px;
+                margin-left: 5%;
+                margin-top: 1%;
+                float: left;
+
+            }
+            .message {
+                display: flex;
+                width: fit-content;
+                border-radius: 5px;
+                border: 1px solid #bcb7be;
+                flex-direction: column;
+                row-gap: 20px;
+            }
+            .message-left{
+                padding: 12px 12px 0 12px;
+                margin: 7px 7px auto 7px;
+                border-bottom-left-radius: 0;
+                background-color: plum;
+            }
+            .message-right{
+                padding: 12px 12px 0 12px;
+                margin: 7px 7px 7px auto;
+                border-bottom-right-radius: 0;
+                background-color: wheat;
+                right: 0;
+            }
+          
+            .atalk-im{
+                border-radius: 50%;
+                width: 20px;
+                margin-left: 5%;
+                margin-top: 12px;
+                float: left;
+            }
+            .btalk-im{
+                border-radius: 50%;
+                width: 20px;
+                margin-left: 5%;
+                margin-top: 12px;
+                float: left;
+            }
+
+            
+            body{
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+                height: 100%;
+            }
+            
+            .status{
+                width: 120px;
+                margin-left: 3%;
+                font: 15px/27px sans-serif;
+                font-weight: normal;
+                margin-right: 20%;
+            }
+
+            .messagefield{
+                display: inline-block;
+                width: 100%;
+                height: 70vh;
+                flex-grow: 1;
+                background-color: white;
+                overflow-y: scroll;
+            }
+
+            input[type=submit] {
+                visibility: collapse;
+            }
+
+            input {
+                font: 20px/24px sans-serif;
+                border: 0;
+                outline: none;
+                margin-bottom: 0;
+                
+                width: 95%;
+            }
+
+            .bottom{
+                position: sticky;
+                bottom: 0;
+                display:flex;
+                width: 100%;
+                left: 0;
+                height: 19vh;
+            }
+            .material-icons1{
+                font-family: 'Material Icons';
+                font-weight: normal;
+                font-style: normal;
+                font-size: 36px;  /* Preferred icon size */
+                display: inline-block;
+                
+                text-transform: none;
+                letter-spacing: normal;
+                word-wrap: normal;
+                white-space: nowrap;
+                direction: ltr;
+                background-color: inherit;
+                position: fixed; /* Фиксированное положение */
+                right: 10px;  
+            }
+
+            .attachement{
+                background-color: white;
+                color: #ffffff;
+                border: 0;
+                padding: 10px;
+                cursor: pointer;
+            }
+            .material-icons1:hover {
+                opacity: 0.8;
+            }
+            .chat-form {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                border-top: 1px solid #bbbbbb;
+            }
+
+        </style>
+    
+            
+            <div class = "head">
+                <button class="material-icons" onclick="window.location.href='/chat_list.html';">
+                    <i class="material-icons">arrow_back</i>
+                </button>
+                <div class="img-head"><img src="https://st2.depositphotos.com/1773655/5632/i/450/depositphotos_56329841-stock-photo-young-man-pointing-up-showing.jpg"></div>
+                
+                <div class="status">
+                    <h2>Майк</h2>
+                    <p>Online</p>
+                </div>
+                <div class="material-icons1">
+                    <button class="material-icons" >
+                        <i class="material-icons">search</i>
+                    </button>
+                    <button class="material-icons" >
+                        <i class="material-icons">more_vert</i>
+                    </button>
+                </div>
+            </div>
+            <div class="messagefield">
+                <div class="message"></div>
+
+
+                <div class="message message-left">
+                    <div class = "btalk-im"> <img src = "https://st2.depositphotos.com/1773655/5632/i/450/depositphotos_56329841-stock-photo-young-man-pointing-up-showing.jpg"  /> </div >
+                    <span class="message-text">Том, у нас горят сроки, ускорься, пожалуйста.</span>
+                    <div class="message-meta">
+                        <span class="message-time">8:34</span>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="bottom">
+                <form class="chat-form" action="/">
+                    <input class="form-input"
+                           name="input-text"
+                           placeholder="Введите сообщение"
+                           type="text">
+                   
+                    <button class="attachment" >
+                        <i class="material-icons">attachment</i>
+                    </button>
+                </form>
+
+            </div>
+            
+            <script>
+                
+const chat = document.querySelector('.messagefield');
+const form = document.querySelector('form');
+const input = document.querySelector('.form-input');
+const message = document.querySelector('.message');
+getFromLocalStorage();
+
+
+
+form.addEventListener('submit', this.handleSubmit.bind(this));
+form.addEventListener('keypress', this.handleKeyPress.bind(this));
+
+function handleSubmit (event) {
+    
+    event.preventDefault();
+    sendMessage();
+    console.log(localStorage);
+    
+    
+}
+
+// Добавляем в localStorage
+function addToLocal(value){
+    console.log(value);
+    let messages = localStorage.getItem("messages") || "[]";
+    console.log(messages);
+    messages = JSON.parse(messages);
+    messages.push(value);
+    localStorage.setItem("messages", JSON.stringify(messages));
+}
+
+// Обработчик Enter
+function handleKeyPress (event) {
+    if (event.keyCode === 13 & input.value !== "" ) {
+        event.preventDefault();
+        sendMessage();
+     //   form.dispatchEvent(new Event('submit'));
+        
+    }
+}
+
+// Извлечь данные из LocalStorage
+function getFromLocalStorage(){
+    let messages = localStorage.getItem('messages');
+
+
+    // Проверка на пустьоту
+if (localStorage.getItem('messages') !== null) {
+    // При успехе просто отображаем наши сообщения из localStorage
+    messages = JSON.parse(messages);
+    for (let message of messages) {
+        if (message != undefined && message["reciever"] === "Майк"){
+        createDiv(message);
+        }
+    }
+}
+else{
+    localStorage.setItem('messages', JSON.stringify([]));
+}
+}
+
+
+// отображение сообщения в чате
+function createDiv(message){
+    if (message !== {}){
+        console.log(message);
+        
+        // формирования нового сообщения 
+        let new_message_img_div = document.createElement('div');
+        new_message_img_div.className = "atalk-im";
+        
+        let new_message_img = document.createElement('img')
+        new_message_img.src = "https://i.pinimg.com/originals/7a/26/8f/7a268f7ce7e63295d5c26922335adda9.jpg";
+        
+        let new_message = document.createElement('div');
+        new_message.className = "message message-right";
+        
+        let new_message_text = document.createElement('span');
+        new_message_text.className = "message-text";
+        new_message_text.innerHTML = message.text;
+        
+        let new_message_meta = document.createElement('div');
+        new_message_meta.className = "message-meta";
+        
+        let new_message_time = document.createElement('span');
+        new_message_time.className = "message-time";
+        new_message_time.innerHTML = message.time;
+        
+        let new_message_status = document.createElement('span');
+        new_message_status.className = "message-status";
+        
+        new_message_status.innerHTML = "<span class='material-icons'>done_all</span>";
+        console.log(new_message);
+        
+
+        // сборка нового сообщения
+        chat.append(new_message);
+        new_message.append(new_message_img_div);
+        new_message_img_div.append(new_message_img);
+        new_message.append(new_message_text);
+        
+        new_message.append(new_message_meta);
+        new_message_meta.append(new_message_time);
+        new_message_meta.append(new_message_status);
+        console.log(new_message);
+        //document.body.messagefield.appendChild(new_message);
+    }
+    
+    
+
+}
+
+// Функция отсылки сообщения
+function sendMessage(){
+    
+    // Проверка на пустоту
+    if (input.value === "") {
+        return;
+    }
+    //узнаём время
+    Data = new Date();
+    let hour = Data.getHours();
+    let minutes =  Data.getMinutes();
+        
+    if (minutes <10){
+        minutes = String("0"+minutes);
+    }
+    
+    // составляем сообщение
+    let message = {
+        'text': input.value,
+        'reciever': "Майк",
+        'time': hour+":"+minutes
+
+    }
+    // Добавляем в localStorage, создаём сообщение в чате и очищаем инпут
+    addToLocal(message);
+    createDiv(message);
+    input.value = "";
+
+}
+    
+            </script>          
+            
+    <script type="text/javascript" src="bundle.js"></script></body>
+</html>
