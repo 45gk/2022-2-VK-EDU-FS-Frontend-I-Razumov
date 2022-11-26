@@ -15,6 +15,20 @@
     border: 0;
 }
 
+@keyframes message_animation{
+    from {
+        transform: scale(0);
+        transform-origin: bottom right;
+    }
+
+    to {
+        transform: scale(1);
+        transform-origin: bottom right;
+    }
+}
+
+
+
 img{
     max-width: 100%;
     border-radius: 50%;
@@ -39,8 +53,40 @@ img{
     margin-left: 5%;
     margin-top: 1%;
     float: left;
+    animation: pulse 2s infinite;
 
 }
+
+.img-head:hover{
+    animation: none;
+
+}
+
+@-webkit-keyframes pulse {
+    0% {
+      -webkit-box-shadow: 0 0 0 0 rgba(204,169,44, 0.4);
+    }
+    70% {
+        -webkit-box-shadow: 0 0 0 10px rgba(204,169,44, 0);
+    }
+    100% {
+        -webkit-box-shadow: 0 0 0 0 rgba(204,169,44, 0);
+    }
+  }
+  @keyframes pulse {
+    0% {
+      -moz-box-shadow: 0 0 0 0 rgba(204,169,44, 0.4);
+      box-shadow: 0 0 0 0 rgba(204,169,44, 0.4);
+    }
+    70% {
+        -moz-box-shadow: 0 0 0 10px rgba(204,169,44, 0);
+        box-shadow: 0 0 0 10px rgba(204,169,44, 0);
+    }
+    100% {
+        -moz-box-shadow: 0 0 0 0 rgba(204,169,44, 0);
+        box-shadow: 0 0 0 0 rgba(204,169,44, 0);
+    }
+  }
 .message {
     display: flex;
     width: fit-content;
@@ -54,6 +100,7 @@ img{
     margin: 7px 7px auto 7px;
     border-bottom-left-radius: 0;
     background-color: plum;
+    animation: message_animation 0.3s;
 }
 .message-right{
     padding: 12px 12px 0 12px;
@@ -61,6 +108,7 @@ img{
     border-bottom-right-radius: 0;
     background-color: wheat;
     right: 0;
+    animation: message_animation 0.5s;
 }
 
 .atalk-im{
@@ -143,6 +191,12 @@ input {
 }
 .material-icons1:hover {
     opacity: 0.8;
+    
+}
+.material-icons:hover {
+    opacity: 0.8;
+    transition: background-color 0.2s;
+    
 }
 .chat-form {
     display: flex;
@@ -232,6 +286,10 @@ body{
     border-radius: 50%;
     box-shadow: 0px 5px 7px 1px rgb(0 0 0 / 20%);
     transition: 1s ease-out;
+    
+}
+.add_button:hover {
+    background-color: orange;
 }
 .atalk-im{
     border-radius: 50%;
@@ -253,6 +311,14 @@ body{
     display: flex;
     align-items:center;
     
+}
+
+.chat:hover {
+    background-color: rgb(207, 212, 207);
+}
+
+.chat:active {
+    background-color: rgb(225, 187, 238);
 }
 
 .message-meta{
@@ -288,6 +354,10 @@ body{
     margin-left: 5%;
     margin-top: 12px;
     float: left;
+    animation: pulse 2s infinite;
+}
+.chat-im:hover{
+    animation: none;
 }
 img{
     max-width: 100%;
