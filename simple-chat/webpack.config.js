@@ -61,8 +61,23 @@ module.exports = {
             filename: 'style.css',
         }),
         new HTMLWebpackPlugin({
+            filename: 'chat_list.html',
+            template: './chat_list.html'
+        }),
+        new HTMLWebpackPlugin({
             filename: 'index.html',
             template: './index.html'
+        }),
+        new HTMLWebpackPlugin({
+            filename: 'mike.html',
+            template: './mike.html'
+        }),
+        new HTMLWebpackPlugin({
+            filename: 'yen.html',
+            template: './yen.html'
         })
+
+
+
     ]
 };
