@@ -1,0 +1,113 @@
+$regular-size: 45px;
+$regular-padding: 10px;
+
+%button-shared {
+  border: 0;
+  padding: $regular-padding;
+  cursor: pointer;
+}
+
+%header-button-shared {
+  @extend %button-shared;
+  background-color: inherit;
+  color: #ffffff;
+  min-height: $regular-size;
+  min-width: $regular-size;
+  height: $regular-size;
+  width: $regular-size;
+  border-radius: 50%;
+  transition: all 0.4s ease;
+}
+
+.back-button,
+.search-button,
+.more-button {
+  @extend %header-button-shared;
+}
+
+.menu-button {
+  @extend %header-button-shared;
+  background-position: center;
+}
+
+.attachment-button {
+  @extend %button-shared;
+  background-color: #ffffff;
+  color: #777777;
+}
+
+.menu-button {
+  .bar {
+    display: block;
+    width: 21px;
+    height: 2px;
+    margin: 4px auto;
+    background: #ffffff;
+  }
+}
+
+.attachment-button:hover {
+  opacity: 0.8;
+}
+
+.back-button:hover,
+.search-button:hover,
+.more-button:hover,
+.menu-button:hover {
+  background-color: #8e4caa;
+  opacity: 0.9;
+}
+
+@media screen and (max-width: 460px) {
+  .back-button, .search-button, .more-button, .back-button {
+    padding: $regular-padding - 5px;
+    width: $regular-size - 5px;
+    height: $regular-size - 5px;
+    min-width: $regular-size - 5px;
+    min-height: $regular-size - 5px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .back-button,
+  .search-button,
+  .more-button,
+  .menu-button {
+    padding: $regular-padding - 7px;
+    width: $regular-size - 10px;
+    height: $regular-size - 10px;
+    min-width: $regular-size - 10px;
+    min-height: $regular-size - 10px;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .back-button,
+  .search-button,
+  .more-button,
+  .menu-button {
+    padding: $regular-padding - 8px;
+    width: $regular-size - 15px;
+    height: $regular-size - 15px;
+    min-width: $regular-size - 15px;
+    min-height: $regular-size - 15px;
+  }
+}
+
+.creation-button {
+  height: 55px;
+  width: 55px;
+  border-radius: 50%;
+  background-color: #ffd54f;
+  color: #756124;
+  cursor: pointer;
+  -webkit-box-shadow: 0 7px 7px 0 rgba(66, 36, 46, 0.2);
+  -moz-box-shadow: 0 7px 7px 0 rgba(66, 36, 46, 0.2);
+  box-shadow: 0 7px 7px 0 rgba(66, 36, 46, 0.2);
+  transition: all 0.4s ease;
+  animation: shadow 2s infinite;
+}
+
+.creation-button:hover {
+  transform: scale(1.1);
+}

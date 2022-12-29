@@ -1,0 +1,27 @@
+.chat-list-container {
+  font-family: Roboto, sans-serif;
+}
+
+.chat-list-body {
+  position: absolute;
+  top: 70px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: auto;
+  background-color: #ffffff;
+  padding: 5px 15px;
+}
+
+.page-name {
+  color: #ffffff;
+  font-size: 20px;
+  font-family: Roboto, sans-serif;
+}
+
+.fixed-button {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding: 25px;
+}
