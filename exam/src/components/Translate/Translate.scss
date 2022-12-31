@@ -1,0 +1,26 @@
+.translate {
+  display: flex;
+  width: fit-content;
+  border-radius: 5px;
+  border: 1px solid #bcb7be;
+  flex-direction: column;
+  row-gap: 5px;
+  padding: 12px 12px 0 12px;
+}
+
+
+.translate-orig {
+  font-size: 15px;
+}
+
+.translate-orig-lang {
+  display: flex;
+  justify-content: flex-end;
+  height: 15px;
+  column-gap: 5px;
+}
+
+.translate-transl {
+  font-size: 12px;
+  color: #887f89;
+}

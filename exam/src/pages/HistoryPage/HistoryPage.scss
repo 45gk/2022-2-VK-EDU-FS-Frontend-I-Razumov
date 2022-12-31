@@ -1,0 +1,35 @@
+
+
+.clear-button{
+  background-color: aqua;
+  font-size: 20px;
+  text-align: center;
+  width: 300px;
+  height: 30px;
+}
+
+.clear-button:hover{
+  background-color: aquamarine;
+}
+.app-name{
+  font-family: "Product Sans",Arial,sans-serif;
+  height: 50px;
+  color: gray;
+  font-size: 50px;
+}
+
+.history-h{
+  font-family: "Product Sans",Arial,sans-serif;
+  height: 40px;
+  color: black;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.history-container{
+  height: 400px;
+}
+
+.back{
+  background-color: aqua;
+}
