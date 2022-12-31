@@ -8,9 +8,9 @@ export default function TranslatePage(props) {
     const [text, setText] = useState('');
     //const [translatedText, setTranslatedText] = useState('Translation');
     //const translatedText = '';
-    const [translatedText, setTranslatedText] = useState('Translation');
-    const languages = props.languages;
-    const langMap = props.langMap;
+    const [translatedText, setTranslatedText] = useState('');
+    const [languages, setLanguage] = useState('');
+    const [langMap , setLangMap]= useState('');
 
 
     useEffect(() => {
@@ -25,11 +25,12 @@ export default function TranslatePage(props) {
       const handleSubmit = (event) => {
         event.preventDefault();
         if (text !== '') {
-            getTranslate();
+            getTranslate(text);
         }
       }
-    const getTranslate = () =>{
-        
+    const getTranslate = (text) =>{
+        const e = document.getElementById('lang-select');
+        const languageToTranslate = e.value;
         const options = {
             method: 'POST',
             headers: {
@@ -40,16 +41,17 @@ export default function TranslatePage(props) {
             body: `[{"Text":"${text}"}]`
         };
         
-        fetch('https://microsoft-translator-text.p.rapidapi.com/translate?to%5B0%5D=ru&api-version=3.0&profanityAction=NoAction&textType=plain', options)
+        fetch(`https://microsoft-translator-text.p.rapidapi.com/translate?to%5B0%5D=${languageToTranslate}&api-version=3.0&profanityAction=NoAction&textType=plain`, options)
             .then(response => response.json())
             .then(response => {
                 //translatedText: ;
-                let origLang = "";
+                let origLang = response[0].detectedLanguage.language;
                 //let origLang = response[0].detectedLanguage[0].language
                 setTranslatedText(response[0].translations[0].text);
-                console.log(translatedText);
-                console.log(response[0].detectedLanguage[0]);
-                writeToLocal(text,translatedText, origLang)
+                
+                console.log(origLang);
+                let translLang = languageToTranslate;
+                writeToLocal(text,response[0].translations[0].text, origLang ,  translLang)
             })
             .catch(err => console.error(err));
 
@@ -70,19 +72,23 @@ export default function TranslatePage(props) {
         fetch('https://microsoft-translator-text.p.rapidapi.com/languages?api-version=3.0', options)
             .then(response => response.json())
             .then(response => {
-                let langs = [];
-                let langsMap = new Map();
+               
+              let langs = [];
+              let langsMap = new Map();
                 Object.keys(response.translation).forEach(function(key, index) {
                     langs.push({key, ...(response.translation[key])})
                     langsMap.set(key, response.translation[key].name)
                 });
-                console.log(langs);
+                setLanguage(langs);
+                setLangMap(langsMap);
+                //console.log(langsMap)
+                
             })
 
             .catch(err => console.error(err));
     }
 
-    const writeToLocal= (text, trans, lang) =>{
+    const writeToLocal= (text, trans, lang,translLang) =>{
         let translates = JSON.parse(localStorage.getItem('translates'));
         if(translates === null) {
             translates = []
@@ -91,11 +97,12 @@ export default function TranslatePage(props) {
           translates.push({
             orig: text,
             origLang: lang,
-            transl: trans
+            transl: trans,
+            translLang:translLang
             
             });
           localStorage.setItem('translates', JSON.stringify(translates));
-          console.log(localStorage);
+          //console.log(localStorage);
     }
 
     return (
@@ -114,8 +121,18 @@ export default function TranslatePage(props) {
         <div className='language'>
           Для перевода нажмите Enter
         </div>
+        <div className='language'>
+          Выбрать язык для перевода:
+        </div>
+        <span className="custom-dropdown">
+            <select id='lang-select'>
+              {/* <option value="">Select language</option> */}
+              {languages && languages.map((item, index) => <option value={item.key} key={index}>{item.name + ' (' + item.nativeName + ')'}</option>
+              )}
+            </select>
+          </span>
       </div>
-      <div className='translate'>
+      <div className='translation'>
         <div className='translate-from'>
           <form className="text-form" onSubmit={handleSubmit}>
             <input className='translate-input'

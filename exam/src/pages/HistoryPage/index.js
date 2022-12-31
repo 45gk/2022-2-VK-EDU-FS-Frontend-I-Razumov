@@ -1,9 +1,9 @@
 function getTrans() {
     let translates = localStorage.getItem('translates');
-
+    console.log(translates);
     if (translates != null && translates !== '') {
         translates = JSON.parse(translates);
-        return translates.all;
+        return translates;
     }
 
     return false;

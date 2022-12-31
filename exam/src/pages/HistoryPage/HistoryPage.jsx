@@ -8,15 +8,20 @@ import {getTrans} from "./index";
 
 export default function HistoryPage(props) {
     const [translates, setTrans] = useState([]);
+    const [reload, setReload] = useState('');
     function loadTranslates() {
         let savedTrans = getTrans()
-        if (savedTrans) {
+        console.log(savedTrans);
+        
+        if (savedTrans != false) {
             setTrans(savedTrans);
         }
+        
     }
     
     useEffect(loadTranslates, [])
-    console.log(localStorage);
+    //console.log(localStorage);
+    //console.log(translates);
     return (
         <div className='history'>
             <div className='app-name'>
@@ -29,6 +34,13 @@ export default function HistoryPage(props) {
             </div>
             
             <div className={'history-container'}>
+
+
+
+            
+
+
+
            
                 <div>
                     <Button className='back'  goTo='/' >
@@ -44,12 +56,18 @@ export default function HistoryPage(props) {
             </div>
             
             
-            <div className='clear-button' onClick={() =>  {localStorage.clear();}}>
+            <div className='clear-button' onClick={() =>  {localStorage.clear();loadTranslates();setReload('История удалена, пожалуйста, перезагрузите страницу')}}>
                  Очистить историю
+            </div>
+
+            <div className='reload-state'> 
+                {reload}
             </div>
             
             
         </div>
+        
+        
     );
 }
 

@@ -6,7 +6,10 @@ export default function History({translates}) {
     const history = translates.map((translate) => {
         return (
             <Translate  orig={translate.orig}
-                        trans={translate.transl}
+                        transl={translate.transl}
+                        origLang={translate.origLang}
+                        translLang={translate.translLang}
+
                     />
         )
     });
