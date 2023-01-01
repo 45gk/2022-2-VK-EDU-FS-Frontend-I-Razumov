@@ -1,0 +1,88 @@
+.translate-to{
+  width: 50% !important;
+  text-align: left;
+  font-size: 25px;
+  font-family: "Product Sans",Arial,sans-serif;
+  width: 50%;
+  border: 0;
+  height: auto;
+  padding: 20px;
+}
+
+.clear-button{
+  background-color: aqua;
+  font-size: 20px;
+  text-align: center;
+}
+
+.clear-button:hover{
+  background-color: aquamarine;
+}
+
+.history-button {
+  margin: 20px 30px;
+  display: flex;
+  flex-direction: row-reverse;
+}
+.app-name{
+  font-family: "Product Sans",Arial,sans-serif;
+  height: 50px;
+  color: gray;
+  font-size: 50px;
+}
+
+.translate-all{
+  height: 70%;
+}
+
+.text-form{
+  height: 220px;
+  width: 100%;
+  border: 20px;
+  display: flex;
+}
+
+.translation{
+  width: 100%;
+  padding-right: 5%;
+}
+
+.translate-out{
+  height: 220px;
+  width: 100vh;
+  border: 20px;
+  font-size: 25px;
+  font-family: "Product Sans",Arial,sans-serif;
+}
+
+.translate-input{
+  width: 100%;
+  height: 100%;
+  font-size: 25px;
+  font-family: "Product Sans",Arial,sans-serif;
+}
+
+.language{
+  font-size: 25px;
+  font-family: "Product Sans",Arial,sans-serif;
+}
+.custom-dropdown{
+  background-color: #e9e9e9;
+  color: rgb(100, 100, 100);
+  font-size: inherit;
+  padding: .5em;
+  padding-right: 2.5em;	
+  border: 0;
+  margin: 5px;
+  border-radius: 3px;
+  text-indent: 0.01px;
+  width: 425.5px;
+  font-family: "Product Sans",Arial,sans-serif;
+  margin-left: 35vh;
+}
+.custom-dropdown::before,
+.custom-dropdown::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}

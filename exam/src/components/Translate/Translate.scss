@@ -1,0 +1,28 @@
+.translate {
+  display: flex;
+  width: fit-content;
+  border-radius: 5px;
+  border: 1px solid #bcb7be;
+  flex-direction: column;
+  row-gap: 5px;
+  padding: 12px 12px 0 12px;
+  background-color: aquamarine;
+}
+
+
+.translate-text {
+  font-size: 25px;
+  display: flex;
+  justify-content: flex-end;
+  height: 25px;
+  column-gap: 5px;
+  font-family: "Product Sans",Arial,sans-serif;
+}
+
+.translate-lang {
+  display: flex;
+  font-family: "Product Sans",Arial,sans-serif;
+  height: 25px;
+  column-gap: 5px;
+  font-size: 25px;
+}
