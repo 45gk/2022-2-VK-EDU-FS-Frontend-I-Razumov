@@ -1,15 +1,18 @@
 {
   "files": {
-    "main.css": "/2022-2-VK-EDU-FS-Frontend-I-Razumov/static/css/main.262f6107.css",
-    "main.js": "/2022-2-VK-EDU-FS-Frontend-I-Razumov/static/js/main.33e7a549.js",
-    "static/js/787.b5aa3df0.chunk.js": "/2022-2-VK-EDU-FS-Frontend-I-Razumov/static/js/787.b5aa3df0.chunk.js",
+    "main.css": "/2022-2-VK-EDU-FS-Frontend-I-Razumov/static/css/main.14e79f60.css",
+    "main.js": "/2022-2-VK-EDU-FS-Frontend-I-Razumov/static/js/main.b6194147.js",
+    "static/js/787.890e5f70.chunk.js": "/2022-2-VK-EDU-FS-Frontend-I-Razumov/static/js/787.890e5f70.chunk.js",
+    "static/media/Yennifer.jpg": "/2022-2-VK-EDU-FS-Frontend-I-Razumov/static/media/Yennifer.43ff4e230a8ce6b371a4.jpg",
+    "static/media/Jennifer.jpg": "/2022-2-VK-EDU-FS-Frontend-I-Razumov/static/media/Jennifer.c00914dde246b1133327.jpg",
+    "static/media/Mike.jpg": "/2022-2-VK-EDU-FS-Frontend-I-Razumov/static/media/Mike.e07c5a408975d934ce1b.jpg",
     "index.html": "/2022-2-VK-EDU-FS-Frontend-I-Razumov/index.html",
-    "main.262f6107.css.map": "/2022-2-VK-EDU-FS-Frontend-I-Razumov/static/css/main.262f6107.css.map",
-    "main.33e7a549.js.map": "/2022-2-VK-EDU-FS-Frontend-I-Razumov/static/js/main.33e7a549.js.map",
-    "787.b5aa3df0.chunk.js.map": "/2022-2-VK-EDU-FS-Frontend-I-Razumov/static/js/787.b5aa3df0.chunk.js.map"
+    "main.14e79f60.css.map": "/2022-2-VK-EDU-FS-Frontend-I-Razumov/static/css/main.14e79f60.css.map",
+    "main.b6194147.js.map": "/2022-2-VK-EDU-FS-Frontend-I-Razumov/static/js/main.b6194147.js.map",
+    "787.890e5f70.chunk.js.map": "/2022-2-VK-EDU-FS-Frontend-I-Razumov/static/js/787.890e5f70.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.262f6107.css",
-    "static/js/main.33e7a549.js"
+    "static/css/main.14e79f60.css",
+    "static/js/main.b6194147.js"
   ]
 }
