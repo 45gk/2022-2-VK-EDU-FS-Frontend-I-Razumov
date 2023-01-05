@@ -1,0 +1,111 @@
+.chat-prof-container {
+  font-family: Roboto, sans-serif;
+  text-align: center;
+  width: 40vh;
+  height: 40vh;
+}
+
+.chat-prof-body {
+  position: absolute;
+  top: 70px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: auto;
+  background-color: #ffffff;
+  padding: 5px 15px;
+}
+
+
+input {
+  text-overflow: clip;
+  width: 100%;
+  font-family: Arial, Helvetica,  sans-serif, cursive;
+  outline: none;
+
+  font-size: 25px;
+  bottom: 0;
+}
+
+.profile-input-container{
+  flex-shrink: 0;
+  border-radius: 5px 5px 0 0;
+  background-color: rgb(223, 223, 223);
+  width: 90%;
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 50px;
+}
+
+.profile-input-header{
+  color: black;
+  font-size: 30px;
+  font-family: Roboto, sans-serif;
+}
+
+.page-name {
+  color: #ffffff;
+  font-size: 20px;
+  font-family: Roboto, sans-serif;
+}
+
+.fixed-button {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding: 25px;
+}
+
+.edit-picture {
+  position: relative;
+  height: 240px;
+  width: 240px;
+  padding: 0;
+  border: 0;
+  margin: 20px;
+}
+
+.profile-avatar {
+  display: block;
+  justify-content: center;
+  height: 240px;
+  width: 240px;
+  padding: 0;
+  border: 0;
+  transition: all 0.2s;
+  font-size: 25px;
+  border-radius: 50%;
+}
+
+.avatar-button {
+
+  display: flex;
+  border-radius: 50%;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(25, 25, 25, 0.25);
+  color: white;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  justify-content: center;
+  
+  
+}
+
+.edit-avatar-icon {
+  font-size: 40px;
+  transform: translate(0.5px, 1px);
+  align-self: center;
+  
+  text-align: center;
+}
+
+.pic{
+  align-items: center;
+  margin-left: 65vh;
+
+}
