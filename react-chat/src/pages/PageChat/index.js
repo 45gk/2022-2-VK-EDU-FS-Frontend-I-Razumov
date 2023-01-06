@@ -14,12 +14,24 @@ function saveMessageToLocalStorage(message) {
     localStorage.setItem('messages', JSON.stringify(messages_content));
 }
 
-function getMessagesFromLocalStorage() {
+function getMessagesFromLocalStorage(userID) {
     let messages = localStorage.getItem('messages');
 
     if (messages != null && messages !== '') {
+        let messages1 = {'all':[]};
+        console.log(messages1)
         messages = JSON.parse(messages);
-        return messages.all;
+        
+        
+        for (var i=0;i<messages.all.length;i++){
+            if (messages.all[i].sender_id===userID){
+                messages1.all.push(messages.all[i]);
+                
+            }
+            
+        }
+        console.log(messages1);
+        return messages1.all;
     }
 
     return false;
