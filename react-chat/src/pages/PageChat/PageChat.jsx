@@ -1,95 +1,110 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState, useEffect, useCallback, useRef} from 'react';
+import {Link} from 'react-router-dom'
 import './PageChat.scss';
 
+import logo from '../../chatlogo.jpg';
 import Jennifer from '../../Jennifer.jpg';
-import Yennifer from '../../Yennifer.jpg';
-import Mike from '../../Mike.jpg';
-
 import Header from '../../components/Header/Header'
 import Button from '../../components/Button/Button'
 import ChatInfo from '../../components/ChatInfo/ChatInfo'
 import ChatForm from '../../components/ChatForm/ChatForm'
 import ChatBody from '../../components/ChatBody/ChatBody'
+import FormGen from '../../components/FormGen/FormGen'
 
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import SearchIcon from '@mui/icons-material/Search';
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import { Link, Route } from 'react-router-dom';
 
-import {getMessagesFromLocalStorage, saveMessageToLocalStorage} from "./index";
+export default function PageChatGeneral () {
+    const [messages, setMessages] = useState([]);
+    const [text, setText] = useState("");
 
-
-export default function PageChat(props) {
-    const [messages, setMessages] = useState([])
-
-    if (props.userID === "1"){
-        var route= Jennifer;
-    }
-    else if (props.userID === "2"){
-        var route= Yennifer;
-    }
-    else{
-        var route= Mike;
-    }
-    
-    let users = localStorage.getItem('users');
-    if (users == null || users === '') {
-        localStorage.setItem('users', JSON.stringify({1:'Дженнифер',2:'Йеннифер',3:'Майк'}));
-    }
-    
-    users = JSON.parse(users);
-
-
-    function sendMessage(message) {
-        const newMessages = Object.assign([], messages);
-        newMessages.push(message);
-        setMessages(newMessages);
-        saveMessageToLocalStorage(message)
+    function getMessages() {
+        fetch("/chats/1/messages/")
+            .then(response => response.json())
+            .then(data => setMessages(data))
+            console.log('suc')
     }
 
-    function loadMessages() {
-        let savedMessages = getMessagesFromLocalStorage(props.userID)
-        console.log(savedMessages);
-        console.log('sadsadsaasss');
-        if (savedMessages) {
-            setMessages(savedMessages);
+    async function sendMessage(message) {
+        const options = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json;charset=utf-8"
+            },
+            body: JSON.stringify(message)
         }
+        const response = await fetch("/chats/1/messages/new", options);
+        const data = await response.json()
+        return data;
     }
+
+    useEffect(() => {
+        getMessages();
+        const timer_id = setInterval(getMessages, 1000);
+
+        return () => {clearInterval(timer_id)} 
+    }, []);
+
+    
+    async function handleSubmit(event) {
+        event.preventDefault();
+        if (text === "")
+            return;
+        const message = {
+            text: text,
+            author: "45gk"
+        };
+        const created_message = await sendMessage(message);
+        if (created_message.timestamp > messages[messages.length-1].timestamp) { 
+            setMessages(messages.concat(created_message));                       
+        }
+        setText("");
+    }
+
+    function handleChange(event) {
+        setText(event.target.value)
+    }
+    console.log(messages)
+
+  return (
    
-
-    useEffect(loadMessages, [])
-
-    return (
         <div className={'chat-container'}>
-            <Header>
-                <Link className="chat" to="/">
-                <Button className={'back-button'}  >
-                    <ArrowBackIcon/>
+        <Header>
+            <Link className="chat" to="/">
+            <Button className={'back-button'}  >
+                <ArrowBackIcon/>
+            </Button>
+            </Link>
+            <Link className="chat" to="/prof1">
+                <ChatInfo imageSource={Jennifer}
+                        chatName={'Дженнифер'}
+                        lastActivity={'Была в сети 2 часа назад'}
+                        isGroup={false}
+                        countMembers={null}/>
+            </Link>
+            <div>
+                <Button className={'search-button'} onClick={() => {
+                }}>
+                    <SearchIcon/>
                 </Button>
-                </Link>
-                <Link className="chat" to={'/prof'+props.userID} userID={props.userID}>
-                    <ChatInfo imageSource={route}
-                            chatName={users[props.userID]}
-                            lastActivity={'была 2 часа назад'}
-                            isGroup={false}
-                            countMembers={null}/>
-                </Link>
-                <div>
-                    <Button className={'search-button'} onClick={() => {
-                    }}>
-                        <SearchIcon/>
-                    </Button>
-                    <Button className={'more-button'} onClick={() => {
-                    }}>
-                        <MoreVertIcon/>
-                    </Button>
-                </div>
-            </Header>
-            <ChatBody messages={messages}/>
-            <div className={'chat-footer'}>
-                <ChatForm sendMessage={sendMessage} userID={props.userID}/>
+                <Button className={'more-button'} onClick={() => {
+                }}>
+                    <MoreVertIcon/>
+                </Button>
             </div>
+        </Header>
+        <ChatBody messages={messages}/>
+        <div className={'chat-footer'}>
+        <FormGen
+                onSubmit={handleSubmit}
+                onChange={handleChange}
+                value={text}
+                name="message_text"
+                placeholder="Напишите сообщение..."
+            />
         </div>
-    );
-}
+        </div>
+  );
+  }
 

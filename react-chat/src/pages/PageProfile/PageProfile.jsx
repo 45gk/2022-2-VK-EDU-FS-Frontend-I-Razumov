@@ -16,29 +16,14 @@ import LocalSeeIcon from '@mui/icons-material/LocalSee';
 import { Link } from 'react-router-dom';
 
 
-export default function PageChatList(props) {
+export default function PageChatList() {
     
-    if (props.userID === "1"){
-        var route= Jennifer;
-    }
-    else if (props.userID === "2"){
-        var route= Yennifer;
-    }
-    else{
-        var route= Mike;
-    }
-    
-    let users = localStorage.getItem('users');
-    if (users == null || users === '') {
-        localStorage.setItem('users', JSON.stringify({1:'Дженнифер',2:'Йеннифер',3:'Майк'}));
-    }
-    
-    users = JSON.parse(users);
+ 
     
     return (
         <div className={'chat-prof-container'}>
             <Header>
-                <Link className="chat" to={'/chat' + props.userID}>
+                <Link className="chat" to={'/chat1'}>
                     <Button className={'back-button'} onClick={() => {
                     }}>
                         <span className="bar"/>
@@ -57,7 +42,7 @@ export default function PageChatList(props) {
                 <div className='pic'>
                     <div className='edit-picture'>
                         <img
-                        src={route}
+                        src={Jennifer}
                         className="profile-avatar"
                         alt="Not found"
                         />
@@ -73,7 +58,7 @@ export default function PageChatList(props) {
                     </div>
                     <div className='profile-input-container'>
                         <input
-                            value={users[props.userID]}
+                            value={'Дженнифер'}
                         />
                     </div>
                 </div>
@@ -84,7 +69,7 @@ export default function PageChatList(props) {
                     </div>
                     <div className='profile-input-container'>
                         <input
-                            value={'@'+users[props.userID]}
+                            value={'@Дженнифер'}
                         />
                     </div>
                 </div>
@@ -95,7 +80,7 @@ export default function PageChatList(props) {
                     </div>
                     <div className='profile-input-container'>
                         <input
-                            value={users[props.userID]+"is the best person in the world"}
+                            value={"Дженнифер is the best person in the world"}
                         />
                     </div>
                 </div>

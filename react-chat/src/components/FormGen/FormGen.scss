@@ -1,0 +1,14 @@
+.chat-list-item-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-list-item-name {
+  font-size: 17px;
+}
+
+.last-message-time {
+  font-size: 13px;
+  color: #7c7c7c;
+}

@@ -8,6 +8,7 @@
   padding: 12px 12px 0 12px;
 }
 
+
 .message-left {
   background-color: #ffffff;
   margin: 7px 7px auto 7px;
@@ -23,6 +24,11 @@
 .message-text {
   font-size: 15px;
 }
+.message-author {
+  font-size: 10px;
+  color: rgb(233, 17, 17);
+}
+
 
 .message-meta {
   display: flex;

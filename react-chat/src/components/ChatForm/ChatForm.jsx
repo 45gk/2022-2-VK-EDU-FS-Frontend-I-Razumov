@@ -23,7 +23,8 @@ export default function ChatForm(props) {
         let message = {
             'text': value,
             'time': `${date.getHours()}:${date.getMinutes()}`,
-            'sender_id': props.userID
+            'sender_id': props.userID,
+            'author': '45gk'
         };
 
         props.sendMessage(message);
