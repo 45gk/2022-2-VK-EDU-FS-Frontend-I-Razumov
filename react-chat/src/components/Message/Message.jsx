@@ -1,26 +1,60 @@
 import React from 'react';
 import './Message.scss';
-import {ifMessageFromUser} from "./index";
+import DoneAllIcon from '@mui/icons-material/DoneAll';
+import DoneIcon from '@mui/icons-material/Done';
 
+export function Message(props) {
 
-export default function Message(props) {
-    let className = ''
-    if (props.author === '45gk'){
-        className = 'message-right';
+    const style = {
+        fontSize: '16px'
     }
-    else{
-        className = 'message-left';
+
+    function Status () {
+        if (props.check === true) {
+            return (
+                <div className='message_check'>
+                    <DoneAllIcon style={style}/>
+                </div>
+            )
+        } else {
+            return (
+                <div className='message_check'>
+                    <DoneIcon style={style}/>
+                </div>
+            )
+        }
     }
-    
-    return (
-        <div className={`message ${className}`}>
-            <span className={'message-author'}>{props.author}</span>
-            <span className={'message-text'}>{props.text}</span>
-            
-            <div className={'message-meta'}>
-                <span className={'message-time'}>{props.time}</span>
-                {ifMessageFromUser(props.ifFromUser, 'message-status', 'message-icon', props.status)}
+ 
+    if (props.owner === 'me' || props.owner === '45gk') {
+        return (
+            <div className='my_message'>
+                <div className='author'>
+                    {props.owner}
+                </div>
+                <div className='content_of_message'>
+                    {props.message}
+                </div>
+                <div className='time_and_check'>
+                    <div className='time_of_message'>
+                        {props.time}
+                    </div>
+                    <Status />
+                </div>
             </div>
-        </div>
-    );
+        )
+    } else {
+        return (
+            <div className='opponent_message'>
+                <div className='author'>
+                    {props.owner}
+                </div>
+                <div className='content_of_message'>
+                    {props.message}
+                </div>
+                <div className='time_of_message'>
+                    {props.time}
+                </div>
+            </div>
+        )
+    }
 }
