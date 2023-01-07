@@ -4,6 +4,7 @@ import './PageChatList.scss';
 import Jennifer from '../../Jennifer.jpg';
 import Yennifer from '../../Yennifer.jpg';
 import Mike from '../../Mike.jpg';
+import logo from '../../chatlogo.jpg';
 
 import Button from "../../components/Button/Button";
 import Header from "../../components/Header/Header";
@@ -51,23 +52,15 @@ export default function PageChatList(props) {
                                />
 
                 </Link>
-                <Link className="chat" to="/chat2">
-                <ChatListItem chatName={users["2"]} goTo='/chat2'
-                              lastMessageTime={'10:52'}
-                              lastMessageContent={'Йеннифер  теперь использует этот супер-мессенджер!'}
-                              ifFromUser={true}
-                              lastMessageStatus={'read'}
-                              imageSource={Yennifer}
-                               />
+                
 
-                </Link>
-                <Link className="chat" to="/chat3">
-                <ChatListItem chatName={users["3"]} goTo='/chat3'
-                              lastMessageTime={'10:52'}
-                              lastMessageContent={'Майк  теперь использует этот супер-мессенджер!'}
+                <Link className="chat" to="/chatGen">
+                <ChatListItem chatName={'Общий чат'} goTo='/chat3'
+                              lastMessageTime={'10:51'}
+                              lastMessageContent={'Общий чат'}
                               ifFromUser={true}
                               lastMessageStatus={'read'}
-                              imageSource={Mike}
+                              imageSource={logo}
                                />
 
                 </Link>
