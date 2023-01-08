@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/2022-2-VK-EDU-FS-Frontend-I-Razumov/static/css/main.a96a7318.css",
-    "main.js": "/2022-2-VK-EDU-FS-Frontend-I-Razumov/static/js/main.fbbc2141.js",
+    "main.js": "/2022-2-VK-EDU-FS-Frontend-I-Razumov/static/js/main.5f85a7e7.js",
     "static/js/787.890e5f70.chunk.js": "/2022-2-VK-EDU-FS-Frontend-I-Razumov/static/js/787.890e5f70.chunk.js",
     "static/media/Yennifer.jpg": "/2022-2-VK-EDU-FS-Frontend-I-Razumov/static/media/Yennifer.43ff4e230a8ce6b371a4.jpg",
     "static/media/Jennifer.jpg": "/2022-2-VK-EDU-FS-Frontend-I-Razumov/static/media/Jennifer.c00914dde246b1133327.jpg",
@@ -9,11 +9,11 @@
     "static/media/chatlogo.jpg": "/2022-2-VK-EDU-FS-Frontend-I-Razumov/static/media/chatlogo.a638508de3c423415010.jpg",
     "index.html": "/2022-2-VK-EDU-FS-Frontend-I-Razumov/index.html",
     "main.a96a7318.css.map": "/2022-2-VK-EDU-FS-Frontend-I-Razumov/static/css/main.a96a7318.css.map",
-    "main.fbbc2141.js.map": "/2022-2-VK-EDU-FS-Frontend-I-Razumov/static/js/main.fbbc2141.js.map",
+    "main.5f85a7e7.js.map": "/2022-2-VK-EDU-FS-Frontend-I-Razumov/static/js/main.5f85a7e7.js.map",
     "787.890e5f70.chunk.js.map": "/2022-2-VK-EDU-FS-Frontend-I-Razumov/static/js/787.890e5f70.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a96a7318.css",
-    "static/js/main.fbbc2141.js"
+    "static/js/main.5f85a7e7.js"
   ]
 }
