@@ -25,7 +25,7 @@ export function GeneralForm(props) {
     function newMessage(text) {
         let newMessage = {
             text: text,
-            author: 'Anya'
+            author: '45gk'
         };
         fetch('https://tt-front.vercel.app/message', {
             method: 'POST',
