@@ -1,48 +1,79 @@
-.message {
-  display: flex;
-  width: fit-content;
-  border-radius: 5px;
-  border: 1px solid #bcb7be;
-  flex-direction: column;
-  row-gap: 5px;
-  padding: 12px 12px 0 12px;
+.my_message {
+    background-color: #F3E5F5;
+    align-self: flex-end;
+    animation-name: appearing, pulse;
+    animation-duration: 1.5s, 2s;
 }
 
-
-.message-left {
-  background-color: #ffffff;
-  margin: 7px 7px auto 7px;
-  border-bottom-left-radius: 0;
+@keyframes appearing {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 100%;
+        box-shadow: 0 0 0 0 rgba(221, 161, 238, 0);
+    }
 }
 
-.message-right {
-  background-color: #f3e5f5;
-  margin: 7px 7px 7px auto;
-  border-bottom-right-radius: 0;
+.my_message, .opponent_message {
+    max-width: 75%;
+    border: 2px solid #D0C8D2;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin: 2px;
+    padding: 6px 10px 2px 6px;
+    min-height: 60px;
+    justify-content: space-between;
+    overflow-wrap: break-word;
+    flex-wrap: wrap;
+    width: max-content;
+}
+.opponent_message {
+    background-color:white;
+    align-self: flex-start;
+    animation-name: appearing, pulse;
+    animation-duration: 1.5s, 2s;
 }
 
-.message-text {
-  font-size: 15px;
-}
-.message-author {
-  font-size: 10px;
-  color: rgb(233, 17, 17);
-}
-
-
-.message-meta {
-  display: flex;
-  justify-content: flex-end;
-  height: 15px;
-  column-gap: 5px;
+.content_of_message {
+    width: 100%;
+    font-size: 20px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    color: black;
+    margin: 2px 0 4px 2px;
 }
 
-.message-time {
-  font-size: 12px;
-  color: #887f89;
+.time_of_message {
+    font-size: 12px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.4);
+    margin-right: 2px;
 }
 
-.message-status .message-icon {
-  font-size: 0.9em;
-  color: #932eae;
+.time_and_check {
+    height: 16px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-top: 4px;
+    align-items: center;
+}
+
+.message_check {  
+    color: #8E24AA;
+    padding-top: 3px;
+    font-size: 12px;
+}
+
+.author {
+    color: #8E24AA;
+    font-size: 12px;
+    margin-right: 2px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: 600;
 }

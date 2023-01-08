@@ -7,7 +7,7 @@ import Yennifer from '../../Yennifer.jpg';
 import Mike from '../../Mike.jpg';
 
 import Button from "../../components/Button/Button";
-import Header from "../../components/Header/Header";
+import { ChatHead } from '../../components';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { Icon } from '@mui/material';
 import CreateIcon from '@mui/icons-material/Create';
@@ -22,22 +22,21 @@ export default function PageChatList() {
     
     return (
         <div className={'chat-prof-container'}>
-            <Header>
-                <Link className="chat" to={'/chat1'}>
+            <ChatHead>
+                <Link to='/chat1'>
                     <Button className={'back-button'} onClick={() => {
                     }}>
-                        <span className="bar"/>
-                        <span className="bar"/>
-                        <span className="bar"/>
+                        
                         <ArrowBackIcon/>
                     </Button>
-                </Link>
+                    </Link>
+                
                 <div className={'page-name'}>Профиль</div>
                 <Button className={'search-button'} onClick={() => {
                 }}>
                     <DoneIcon/>
                 </Button>
-            </Header>
+            </ChatHead>
             <div className={'chat-prof-body'}>
                 <div className='pic'>
                     <div className='edit-picture'>

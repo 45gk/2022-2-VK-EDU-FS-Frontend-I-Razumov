@@ -1,77 +1,115 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import MenuIcon from '@mui/icons-material/Menu';
+import SearchIcon from '@mui/icons-material/Search';
+import EditIcon from '@mui/icons-material/Edit';
 import './PageChatList.scss';
-
-import Jennifer from '../../Jennifer.jpg';
-import Yennifer from '../../Yennifer.jpg';
-import Mike from '../../Mike.jpg';
-import logo from '../../chatlogo.jpg';
-
-import Button from "../../components/Button/Button";
-import Header from "../../components/Header/Header";
-import ChatListItem from "../../components/ChatListItem/ChatListItem";
-
-import CreateIcon from '@mui/icons-material/Create';
-import SearchIcon from "@mui/icons-material/Search";
-
-import { Link } from 'react-router-dom';
+//import mycat from '../../photos/mycat.jpg';
+import { Button1 } from '../../components';
+import { ChatHead } from '../../components';
+import { Chats } from '../../components';
+import { HeadName } from '../../components';
 
 
-export default function PageChatList(props) {
-    
-    let users = localStorage.getItem('users');
-    if (users == null || users === '') {
-        localStorage.setItem('users', JSON.stringify({1:'Дженнифер',2:'Йеннифер',3:'Майк'}));
+export async function allowNotification() {
+    try {
+        await Notification.requestPermission();
+    } catch (error) {
+        return false;
     }
-    
-    users = JSON.parse(users);
-    console.log(users["1"]);
-
-    return (
-        <div className={'chat-list-container'}>
-            <Header>
-                <Button className={'menu-button'} onClick={() => {
-                }}>
-                    <span className="bar"/>
-                    <span className="bar"/>
-                    <span className="bar"/>
-                </Button>
-                <div className={'page-name'}>Messenger</div>
-                <Button className={'search-button'} onClick={() => {
-                }}>
-                    <SearchIcon/>
-                </Button>
-            </Header>
-            <div className={'chat-list-body'}>
-                <Link className="chat" to="/chat1">
-                <ChatListItem chatName={users["1"]} goTo='/chat1'
-                              lastMessageTime={'10:52'}
-                              lastMessageContent={'Дженнифер  теперь использует этот супер-мессенджер!'}
-                              ifFromUser={true}
-                              lastMessageStatus={'read'}
-                              imageSource={Jennifer}
-                               />
-
-                </Link>
-                
-
-                <Link className="chat" to="/chatGen">
-                <ChatListItem chatName={'Общий чат'} goTo='/chat3'
-                              lastMessageTime={'10:51'}
-                              lastMessageContent={'Общий чат'}
-                              ifFromUser={true}
-                              lastMessageStatus={'read'}
-                              imageSource={logo}
-                               />
-
-                </Link>
-            </div>
-            <div className={'fixed-button'}>
-                <Button className={'creation-button'} onClick={() => {
-                }}>
-                    <CreateIcon/>
-                </Button>
-            </div>
-        </div>
-    );
+    return true;
 }
 
+
+export function PageChatList(props) {
+
+
+    const [chatsEarlier, setChatsEarlier] = useState([]);
+    const [generalEarlier, setGeneralEarlier] = useState({});
+    const [chats, setChats] = useState([]);
+    const [lastgmessage, setLastgmessage] = useState({})
+
+
+    const style = {
+        fontSize: '28px'
+    }
+
+    
+    function getTimeFromISOString(timestamp) {
+        return new Date(timestamp).toLocaleTimeString('ru', { timeStyle: 'short', hour12: false, timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone });
+    }
+
+
+    useEffect(() => {
+        const pollItems = () => {
+            fetch('/chats/list/1', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+            .then(response => response.json())
+            .then(data => setChats(data))
+    
+            fetch('https://tt-front.vercel.app/messages', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                let message = data.at(-1);
+                message.timestamp = getTimeFromISOString(message.timestamp);
+                setLastgmessage(message);  
+            })
+        }
+
+        setChatsEarlier(chats);
+        setGeneralEarlier(lastgmessage);
+        const time = setInterval(() => pollItems(), 1000);
+        return () => clearInterval(time);
+    }, [chats, lastgmessage]);
+
+  
+    useEffect(() => {
+        if (allowNotification()) {
+            console.log(lastgmessage);
+            console.log(chatsEarlier);
+            for (let i = 0; i < chatsEarlier.length; i++) {
+                if ((chats[i].chat_messages.length > chatsEarlier[i].chat_messages.length) && (chats[i].last_message.owner !== 'me')) {
+                    let notification = new Notification(`New message from '${chats[i].chat_title}'`,{
+                        body: `${chats[i].last_message.owner}: ${chats[i].last_message.message}`,
+                    });
+                    notification.close();
+                }
+            }
+            if ((lastgmessage.id > generalEarlier.id) && (lastgmessage.author !== 'Anya')) {
+                let notification = new Notification(`New message from 'Общий чат'`,{
+                    body: `${lastgmessage.author}: ${lastgmessage.text}`,
+                });
+                notification.close();
+            }
+            setChatsEarlier(chats);
+            setGeneralEarlier(lastgmessage);
+        }
+    }, [chats, chatsEarlier, generalEarlier, lastgmessage])
+
+
+    return (
+        <div className='chats_list'>
+            <ChatHead>
+                <Button1>
+                    <MenuIcon style={style}/>
+                </Button1>
+                <HeadName name={'Messenger'} />
+                <Button1>
+                    <SearchIcon style={style}/>
+                </Button1>
+            </ChatHead>
+            <Chats chats={chats} last_gen_mes={lastgmessage} />
+            <div className='create_chat'>
+                <EditIcon style={style} />
+            </div>
+        </div>
+    )
+}
